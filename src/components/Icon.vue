@@ -20,4 +20,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+svg
+    width: 100%
+    height: 100%
+</style>
