@@ -4,12 +4,21 @@
     .logo
       icon(name="logo")
     .nav-wrapper
-      router-link(
-        to="/activity",
-        :class="{ active: page === undefined || page === 'activity' }"
-      ) 景點活動
-      router-link(to="/food", :class="{ active: page === 'food' }") 美食住宿
-      router-link(to="/transport", :class="{ active: page === 'transport' }") 景點交通
+      .nav-item
+        Icon.icon(name="viewTag")
+        router-link.activity(
+          to="/activity",
+          :class="{ active: page === undefined || page === 'activity' }"
+        ) 景點活動
+      .nav-item
+        Icon.icon(name="foodTag")
+        router-link.food(to="/food", :class="{ active: page === 'food' }") 美食住宿
+      .nav-item
+        Icon.icon(name="transportTag")
+        router-link.transport(
+          to="/transport",
+          :class="{ active: page === 'transport' }"
+        ) 景點交通
     .form
       .select
         select(v-model="type")
@@ -31,6 +40,9 @@
 import Icon from "@/components/Icon"
 import "@/assets/svg/logo.svg"
 import "@/assets/svg/location.svg"
+import "@/assets/svg/viewTag.svg"
+import "@/assets/svg/foodTag.svg"
+import "@/assets/svg/transportTag.svg"
 export default {
   components: {
     Icon
@@ -63,23 +75,26 @@ export default {
   .nav
     padding: 15px 18px 19px 16px
     position: relative
-    background-color: #fff
+    background-color: $white
     .logo
       margin: 0 auto
       width: 90px
       height: 52px
     .nav-wrapper
-      padding: 9.5px 31px
+      padding: 9.5px 0
       margin-top: 13px
       border-radius: 6px
       box-shadow: 0px 2px 4px rgba(13, 11, 12, 0.2)
       display: flex
-      justify-content: space-between
+      justify-content: space-evenly
       align-items: center
       font-size: 14px
       line-height: 21px
-      .active
-        color: $primary
+      .nav-item
+        .icon
+          display: none
+        .active
+          color: $primary
     .form
       margin-top: 12px
       display: flex
@@ -100,8 +115,46 @@ export default {
       z-index: -1
       &.left
         left: 16px
-        background: linear-gradient(-10deg, transparent 50%, #0D0B0C 50%)
+        background: linear-gradient(-10deg, transparent 50%, $grey-001 50%)
       &.right
         right: 16px
-        background: linear-gradient(10deg, transparent 50%, #0D0B0C 50%)
+        background: linear-gradient(10deg, transparent 50%, $grey-001 50%)
+  +rwdMin(768px)
+    .nav
+      display: flex
+      justify-content: space-between
+      .logo
+        margin: 0
+        width: 86px
+        height: 50px
+      .nav-wrapper
+        box-shadow: none
+        .nav-item
+          display: flex
+          align-items: flex-end
+          text-decoration: underline
+          &:not(:last-child)
+            margin-right: 27px
+          .icon
+            margin-right: 8px
+            display: inline-block
+            width: 34px
+            height: 34px
+          .activity
+            color: $primary
+          .food
+            color: $secondary
+          .transport
+            color: $third
+      .form
+        display: none
+      .shadow
+        width: 50%
+        height: 52px
+        top: 70%
+        filter: blur(6px)
+        &.left
+          background: linear-gradient(-5deg, transparent 50%, $grey-001 50%)
+        &.right
+          background: linear-gradient(5deg, transparent 50%, $grey-001 50%)
 </style>
