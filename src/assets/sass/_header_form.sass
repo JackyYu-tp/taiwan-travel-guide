@@ -1,0 +1,46 @@
+@import '_utils'
+@mixin form($photo)
+  .form
+    margin-top: 12px
+    .form-wrapper
+      .slogan, .input-bar
+        display: none
+      .select-bar
+        display: flex
+        gap: 8px
+        .select
+          height: 40px
+          flex-grow: 1
+        .search
+          width: 40px
+          height: 40px
+          background-color: $primary
+          border-radius: 6px
+          box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2)
+  +rwdMin(768px)
+    .form
+      display: none
+  +rwdMin(1280px)
+    .form
+      display: block
+      height: 500px
+      background-image: url($photo)
+      background-size: cover
+      background-repeat: no-repeat
+      display: flex
+      justify-content: center
+      align-items: center
+      .form-wrapper
+        width: 486px
+        .slogan
+          display: block
+          height: 70px
+        .input-bar
+          margin-top: 37px
+          display: flex
+          .icon
+            width: 40px
+            height: 40px
+        .select-bar
+          margin-top: 10px
+          display: flex
