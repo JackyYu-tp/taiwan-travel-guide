@@ -10,9 +10,9 @@ const routes = [
     component: () => import("@/views/Activity.vue"),
     children: [
       {
-        path: "hot",
-        name: "HotActivity",
-        component: () => import("@/views/Activity/HotActivity.vue")
+        path: "popular",
+        name: "PopularActivity",
+        component: () => import("@/views/Activity/PopularActivity.vue")
       }
     ]
   },
@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: "*",
-    redirect: { name: "HotActivity" }
+    redirect: { name: "PopularActivity" }
   }
 ]
 
