@@ -29,14 +29,64 @@ export default {
           photo: "taipei"
         },
         {
-          name: "台北市",
-          value: "taipei",
-          photo: "taipei"
+          name: "新北市",
+          value: "new-taipei",
+          photo: "new-taipei"
         },
         {
-          name: "台北市",
-          value: "taipei",
-          photo: "taipei"
+          name: "桃園市",
+          value: "taoyuan",
+          photo: "taoyuan"
+        },
+        {
+          name: "新竹市",
+          value: "hsinchu",
+          photo: "hsinchu"
+        },
+        {
+          name: "台中",
+          value: "taichung",
+          photo: "taichung"
+        },
+        {
+          name: "南投",
+          value: "nantou",
+          photo: "nantou"
+        },
+        {
+          name: "嘉義",
+          value: "chiayi",
+          photo: "chiayi"
+        },
+        {
+          name: "高雄",
+          value: "kaohsiung",
+          photo: "kaohsiung"
+        },
+        {
+          name: "屏東",
+          value: "pingtung",
+          photo: "pingtung"
+        },
+        {
+          name: "宜蘭",
+          value: "yilan",
+          photo: "yilan"
+        },
+        {
+          name: "花蓮",
+          value: "hualien",
+          photo: "hualien"
+        },
+        {
+          name: "台東",
+          value: "taitung",
+          photo: "taitung"
+        },
+        {
+          name: "金門馬祖.澎湖",
+          value: "penghu",
+          photo: "penghu"
         }
       ]
     }
@@ -94,6 +144,7 @@ export default {
         left: 0
         background-color: rgba($black, .3)
       .content-wrapper
+        width: 100%
         text-align: center
         position: absolute
         top: 50%
@@ -107,4 +158,29 @@ export default {
           margin-top: 4px
           font-size: 14px
           color: $white
+  +rwdMin(768px)
+    .title-wrapper
+      .icon
+        width: 20px
+        margin-left: 0
+  +rwdMin(1280px)
+    .title-wrapper
+      .icon
+        margin-right: 14px
+      .title
+        font-size: 1.25rem
+    .item-wrapper
+      height: 245px
+      gap: 13px
+      .item
+        width: 202px
+        height: calc(50% - 9px)
+        border-width: 7px 9px
+        &:nth-child(3n+1)
+          height: calc(100% - 5px)
+          border-width: 14px 13px
+        .content-wrapper
+          .name
+            margin-top: 7px
+            font-size: 1.25rem
 </style>
