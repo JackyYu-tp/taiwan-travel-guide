@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     handleInput({ event, value }) {
-      console.log(event, value)
       this[event] = value
     }
   }
