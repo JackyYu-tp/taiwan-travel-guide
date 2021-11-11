@@ -113,6 +113,7 @@ export default {
       margin-left: 10px
     .title
       font-size: 14px
+      line-height: 21px
   .item-wrapper
     margin-top: 12px
     height: 192px
@@ -158,6 +159,7 @@ export default {
         .name
           margin-top: 4px
           font-size: 14px
+          line-height: 21px
           color: $white
   +rwdMin(768px)
     .title-wrapper

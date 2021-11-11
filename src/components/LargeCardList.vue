@@ -47,6 +47,7 @@ export default {
       margin-left: 10px
     .title
       font-size: 14px
+      line-height: 21px
   .item-wrapper
     padding: 0 15px
     margin-top: 18px
@@ -63,6 +64,8 @@ export default {
     .item-wrapper
       padding: 0 12px
       gap: 17px
+      .item
+        width: calc(50% - 8.5px)
   +rwdMin(1280px)
     .title-wrapper
       .icon
@@ -72,4 +75,7 @@ export default {
     .item-wrapper
       padding: 0
       gap: 30px
+      .item
+        width: calc(50% - 15px)
+        height: 228px
 </style>
