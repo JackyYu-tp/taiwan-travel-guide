@@ -11,8 +11,8 @@ const routes = [
     children: [
       {
         path: "popular",
-        name: "PopularActivity",
-        component: () => import("@/views/Activity/PopularActivity.vue")
+        name: "ActivityIndex",
+        component: () => import("@/views/Activity/index.vue")
       }
     ]
   },
@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: "*",
-    redirect: { name: "PopularActivity" }
+    redirect: { name: "ActivityIndex" }
   }
 ]
 
