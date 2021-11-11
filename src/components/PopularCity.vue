@@ -154,6 +154,7 @@ export default {
         .icon
           width: 16px
           height: 19px
+          color: $white
         .name
           margin-top: 4px
           font-size: 14px
