@@ -8,7 +8,7 @@
         Icon.icon(name="viewTag")
         router-link.activity(
           to="/activity/popular",
-          :class="{ active: page === 'Home' || page === 'Activity' }"
+          :class="{ active: page === 'ActivityIndex' }"
         ) 景點活動
       .nav-item
         Icon.icon(name="foodTag")
