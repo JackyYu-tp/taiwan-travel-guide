@@ -4,7 +4,7 @@
     Icon.icon(name="triTag")
     .title {{ title }}
   .item-wrapper
-    LargeCard.item(v-for="item in list", :item="item")
+    LargeCard.item(v-for="item in list", :item="item", :id="item.id")
 </template>
 
 <script>

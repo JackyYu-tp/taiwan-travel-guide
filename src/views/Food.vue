@@ -5,6 +5,7 @@
       :type="type",
       :county="county",
       :keyword="keyword",
+      :typeList="typeList",
       @type="handleInput",
       @county="handleInput",
       @keyword="handleInput"
@@ -29,7 +30,11 @@ export default {
     return {
       type: "",
       county: "",
-      keyword: ""
+      keyword: "",
+      typeList: [
+        { name: "美食", value: "Restaurant" },
+        { name: "住宿", value: "Hotel" }
+      ]
     }
   },
   methods: {

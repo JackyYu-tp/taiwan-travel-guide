@@ -4,6 +4,7 @@
     :type="type",
     :county="county",
     :keyword="keyword",
+    :typeList="typeList",
     @type="handleInput",
     @county="handleInput",
     @keyword="handleInput"
@@ -30,7 +31,11 @@ export default {
     return {
       type: "",
       county: "",
-      keyword: ""
+      keyword: "",
+      typeList: [
+        { name: "景點", value: "ScenicSpot" },
+        { name: "活動", value: "Activity" }
+      ]
     }
   },
   computed: {

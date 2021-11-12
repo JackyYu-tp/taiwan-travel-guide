@@ -17,21 +17,28 @@
           @change="handleEmit('type', $event.target.value)"
         )
           option(value="", disabled) 類別
-          option(value="view") 景點
-          option(value="activity") 活動
+          option(
+            v-for="item in typeList",
+            :value="item.value",
+            :id="item.value"
+          ) {{ item.name }}
       .select
         select(
           :value="county",
           @change="handleEmit('county', $event.target.value)"
         )
           option(value="", disabled) 不分縣市
-          option(value="view") 景點
-          option(value="view") 美食
+          option(
+            v-for="item in cityList",
+            :value="item.value",
+            :id="item.value"
+          ) {{ item.name }}
       .search
         Icon(name="search")
 </template>
 
 <script>
+import { mapState } from "vuex"
 import Icon from "@/components/Icon"
 import "@/assets/svg/search.svg"
 import "@/assets/svg/slogan.svg"
@@ -43,10 +50,14 @@ export default {
   props: {
     type: String,
     county: String,
-    keyword: String
+    keyword: String,
+    typeList: Array
   },
   data() {
     return {}
+  },
+  computed: {
+    ...mapState(["cityList"])
   },
   methods: {
     handleEmit(event, value) {
