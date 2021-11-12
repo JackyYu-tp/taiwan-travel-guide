@@ -10,7 +10,7 @@
   )
   PopularCity
   LargeCardList.activity-list(title="熱門活動", :list="activityList")
-  SmallCardList.activity-list(title="熱門餐飲", :list="activityList")
+  SmallCardList.activity-list(title="熱門餐飲", :list="restaurantList")
 </template>
 
 <script>
@@ -34,13 +34,16 @@ export default {
     }
   },
   computed: {
-    ...mapState("activity", ["activityList"])
+    ...mapState("activity", ["activityList"]),
+    ...mapState("food", ["restaurantList"])
   },
   mounted() {
     this.getList(4)
+    this.getRestaurantList(10)
   },
   methods: {
     ...mapActions("activity", ["getList"]),
+    ...mapActions("food", ["getRestaurantList"]),
     handleInput({ event, value }) {
       this[event] = value
     }

@@ -77,5 +77,5 @@ export default {
       gap: 9px
       .item
         margin-top: 26px
-        width: calc(20% - 4.5px)
+        width: calc(20% - 7.2px)
 </style>
