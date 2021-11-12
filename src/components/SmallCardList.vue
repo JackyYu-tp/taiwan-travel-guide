@@ -64,7 +64,7 @@ export default {
       gap: 12px
       .item
         margin-top: 14px
-        width: calc(25% - 6px)
+        width: calc(25% - 9px)
   +rwdMin(1280px)
     .title-wrapper
       .icon

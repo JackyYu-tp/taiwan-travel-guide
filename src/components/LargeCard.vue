@@ -41,7 +41,7 @@ export default {
   position: relative
   .img
     margin-right: 17px
-    flex-grow: 1
+    flex-grow: 0
     flex-shrink: 0
     width: 92px
     height: 100%
@@ -49,6 +49,7 @@ export default {
     background-position: center
   .content-wrapper
     flex-grow: 1
+    flex-shrink: 1
     display: flex
     flex-direction: column
     justify-content: space-between

@@ -121,7 +121,7 @@ export default {
     gap: 4px
     flex-direction: column
     flex-wrap: wrap
-    align-content: start
+    align-content: flex-start
     overflow-y: scroll
     .item
       width: 159px
