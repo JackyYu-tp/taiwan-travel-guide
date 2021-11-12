@@ -172,6 +172,7 @@ export default {
         margin-right: 14px
       .title
         font-size: 1.25rem
+        line-height: 28px
     .item-wrapper
       height: 245px
       gap: 13px
@@ -186,4 +187,5 @@ export default {
           .name
             margin-top: 7px
             font-size: 1.25rem
+            line-height: 28px
 </style>

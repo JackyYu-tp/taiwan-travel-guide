@@ -10,17 +10,20 @@
   )
   PopularCity
   LargeCardList.activity-list(title="熱門活動", :list="activityList")
+  SmallCardList.activity-list(title="熱門餐飲", :list="activityList")
 </template>
 
 <script>
 import PopularCity from "@/components/PopularCity.vue"
 import LargeCardList from "@/components/LargeCardList.vue"
+import SmallCardList from "@/components/SmallCardList.vue"
 export default {
   name: "PopularActivity",
   components: {
     SubForm: () => import("@/components/SubForm"),
     PopularCity,
-    LargeCardList
+    LargeCardList,
+    SmallCardList
   },
   data() {
     return {

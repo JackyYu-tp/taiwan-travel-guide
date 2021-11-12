@@ -1,21 +1,21 @@
 <template lang="pug">
 .list-wrapper
   .title-wrapper
-    Icon.icon(name="triTag")
+    Icon.icon(name="recTag")
     .title {{ title }}
   .item-wrapper
-    LargeCard.item(v-for="item in list", :item="item")
+    SmallCard.item(v-for="item in list", :item="item")
 </template>
 
 <script>
-import LargeCard from "@/components/LargeCard"
+import SmallCard from "@/components/SmallCard"
 import Icon from "@/components/Icon"
-import "@/assets/svg/triTag.svg"
+import "@/assets/svg/recTag.svg"
 import "@/assets/svg/locate.svg"
 export default {
-  name: "LargeCardList",
+  name: "SmallCardList",
   components: {
-    LargeCard,
+    SmallCard,
     Icon
   },
   props: {
@@ -49,34 +49,33 @@ export default {
       font-size: 14px
       line-height: 21px
   .item-wrapper
-    padding: 0 15px
-    margin-top: 18px
+    padding: 0 10px
     display: flex
-    gap: 15px
+    gap: 4px
     flex-wrap: wrap
     .item
-      width: 100%
+      margin-top: 15px
+      width: calc(50% - 2px)
   +rwdMin(768px)
     .title-wrapper
       .icon
-        width: 20px
         margin-left: 0
     .item-wrapper
-      padding: 0 12px
-      gap: 17px
+      gap: 12px
       .item
-        width: calc(50% - 8.5px)
+        margin-top: 14px
+        width: calc(25% - 6px)
   +rwdMin(1280px)
     .title-wrapper
       .icon
-        margin-right: 14px
+        margin-right: 13px
       .title
         font-size: 1.25rem
         line-height: 28px
     .item-wrapper
       padding: 0
-      gap: 30px
+      gap: 9px
       .item
-        width: calc(50% - 15px)
-        height: 228px
+        margin-top: 26px
+        width: calc(20% - 4.5px)
 </style>
