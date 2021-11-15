@@ -7,7 +7,7 @@ const state = {
 const getters = {}
 
 const actions = {
-  getList(context, count) {
+  getActivityList(context, { count }) {
     return new Promise((resolve, reject) => {
       ApiService.get("/Tourism", "Activity", {
         $format: "JSON",

@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      type: "",
+      type: "ScenicSpot",
       county: "",
       keyword: "",
       typeList: [
@@ -43,11 +43,11 @@ export default {
     ...mapState("food", ["restaurantList"])
   },
   mounted() {
-    this.getList(4)
-    this.getRestaurantList(10)
+    this.getActivityList({ count: 4 })
+    this.getRestaurantList({ count: 10 })
   },
   methods: {
-    ...mapActions("activity", ["getList"]),
+    ...mapActions("activity", ["getActivityList"]),
     ...mapActions("food", ["getRestaurantList"]),
     handleInput({ event, value }) {
       this[event] = value

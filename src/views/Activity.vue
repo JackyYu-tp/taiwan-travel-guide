@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      type: "",
+      type: "ScenicSpot",
       county: "",
       keyword: "",
       typeList: [
