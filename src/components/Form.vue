@@ -16,7 +16,6 @@
           :value="type",
           @change="handleEmit('type', $event.target.value)"
         )
-          option(value="", disabled) 類別
           option(
             v-for="item in typeList",
             :value="item.value",
@@ -34,7 +33,7 @@
             :id="item.value"
           ) {{ item.name }}
       .search
-        Icon(name="search")
+        Icon(name="search", @click="handleSearch")
 </template>
 
 <script>
@@ -62,6 +61,9 @@ export default {
   methods: {
     handleEmit(event, value) {
       this.$emit(event, { event, value })
+    },
+    handleSearch() {
+      this.$emit("search")
     }
   }
 }

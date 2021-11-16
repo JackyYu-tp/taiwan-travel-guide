@@ -5,7 +5,7 @@
     .name {{ item.Name }}
     .locate
       Icon.icon(name="locate")
-      .locate-name {{ item.Address }}
+      .locate-name {{ item.Address || item.City }}
   .shadow.left
   .shadow.right
 </template>

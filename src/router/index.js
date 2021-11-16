@@ -12,7 +12,12 @@ const routes = [
       {
         path: "popular",
         name: "ActivityIndex",
-        component: () => import("@/views/Activity/index.vue")
+        component: () => import("@/views/Activity/Index.vue")
+      },
+      {
+        path: "search",
+        name: "ActivitySearch",
+        component: () => import("@/views/Activity/Search.vue")
       }
     ]
   },
