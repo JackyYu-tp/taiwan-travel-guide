@@ -58,10 +58,12 @@ export default {
       line-height: 21px
     .description
       display: none
+      word-break: break-all
     .locate
       display: flex
       align-items: center
       .icon
+        flex-shrink: 0
         margin-right: 8px
         width: 16px
         height: 19px

@@ -9,7 +9,7 @@
     @county="handleInput",
     @keyword="handleInput"
   )
-  PopularCity
+  PopularCity(@search="handleSearch")
   LargeCardList.activity-list(title="熱門活動", :list="activityList")
   SmallCardList.activity-list(title="熱門餐飲", :list="restaurantList")
 </template>
@@ -47,6 +47,20 @@ export default {
     ...mapActions("food", ["getRestaurantList"]),
     handleInput({ event, value }) {
       this[event] = value
+    },
+    handleSearch(name) {
+      this.$router
+        .push({
+          name: "ActivitySearch",
+          query: {
+            type: this.type,
+            county: name,
+            keyword: this.keyword
+          }
+        })
+        .catch((error) => {
+          error
+        })
     }
   }
 }

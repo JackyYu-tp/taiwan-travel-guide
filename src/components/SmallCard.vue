@@ -59,6 +59,7 @@ export default {
       display: flex
       align-items: center
       .icon
+        flex-shrink: 0
         margin-right: 5px
         width: 11px
         height: 13px

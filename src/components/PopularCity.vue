@@ -4,7 +4,7 @@
     Icon.icon(name="triTag")
     .title 熱門城市
   .item-wrapper
-    .item(v-for="item in cityList")
+    .item(v-for="item in cityList", @click="handleSearch(item.value)")
       img.img(:src="getImage(item.photo)")
       .content-wrapper
         Icon.icon(name="locate")
@@ -25,67 +25,67 @@ export default {
       cityList: [
         {
           name: "台北市",
-          value: "taipei",
+          value: "Taipei",
           photo: "taipei"
         },
         {
           name: "新北市",
-          value: "new-taipei",
+          value: "NewTaipei",
           photo: "new-taipei"
         },
         {
           name: "桃園市",
-          value: "taoyuan",
+          value: "Taoyuan",
           photo: "taoyuan"
         },
         {
           name: "新竹市",
-          value: "hsinchu",
+          value: "Hsinchu",
           photo: "hsinchu"
         },
         {
           name: "台中",
-          value: "taichung",
+          value: "Taichung",
           photo: "taichung"
         },
         {
           name: "南投",
-          value: "nantou",
+          value: "NantouCounty",
           photo: "nantou"
         },
         {
           name: "嘉義",
-          value: "chiayi",
+          value: "ChiayiCounty",
           photo: "chiayi"
         },
         {
           name: "高雄",
-          value: "kaohsiung",
+          value: "Kaohsiung",
           photo: "kaohsiung"
         },
         {
           name: "屏東",
-          value: "pingtung",
+          value: "PingtungCounty",
           photo: "pingtung"
         },
         {
           name: "宜蘭",
-          value: "yilan",
+          value: "YilanCounty",
           photo: "yilan"
         },
         {
           name: "花蓮",
-          value: "hualien",
+          value: "HualienCounty",
           photo: "hualien"
         },
         {
           name: "台東",
-          value: "taitung",
+          value: "TaitungCounty",
           photo: "taitung"
         },
         {
-          name: "金門馬祖.澎湖",
-          value: "penghu",
+          name: "澎湖",
+          value: "PenghuCounty",
           photo: "penghu"
         }
       ]
@@ -95,6 +95,9 @@ export default {
   methods: {
     getImage(photo) {
       return require(`../assets/img/${photo}.jpg`)
+    },
+    handleSearch(name) {
+      this.$emit("search", name)
     }
   }
 }
