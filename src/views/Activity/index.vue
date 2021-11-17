@@ -31,15 +31,11 @@ export default {
     return {
       type: "ScenicSpot",
       county: "",
-      keyword: "",
-      typeList: [
-        { name: "景點", value: "ScenicSpot" },
-        { name: "活動", value: "Activity" }
-      ]
+      keyword: ""
     }
   },
   computed: {
-    ...mapState("activity", ["activityList"]),
+    ...mapState("activity", ["activityList", "typeList"]),
     ...mapState("food", ["restaurantList"])
   },
   mounted() {
