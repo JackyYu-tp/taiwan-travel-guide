@@ -2,7 +2,7 @@
 .small-card
   .img(:style="`background-image: url(${item.Picture.PictureUrl1})`")
   .content-wrapper
-    .name {{ item.Name }}
+    .name {{ item.name }}
     .locate
       Icon.icon(name="locate")
       .locate-name {{ item.Address || item.City }}

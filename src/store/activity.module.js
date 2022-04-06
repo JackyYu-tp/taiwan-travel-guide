@@ -21,7 +21,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       let filter = "Picture/PictureUrl1 ne null"
       if (keyword && search) {
-        filter += ` and contains(Name,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
+        filter += ` and contains(ActivityName,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
       }
       let top = count
       if (search) {
@@ -50,7 +50,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       let filter = "Picture/PictureUrl1 ne null"
       if (keyword) {
-        filter += ` and contains(Name,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
+        filter += ` and contains(ActivityName,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
       }
       ApiService.get("/Tourism/Activity", county, {
         $format: "JSON",
@@ -70,7 +70,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       let filter = "Picture/PictureUrl1 ne null"
       if (keyword && search) {
-        filter += ` and contains(Name,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
+        filter += ` and contains(ScenicSpotName,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
       }
       ApiService.get("/Tourism", "ScenicSpot", {
         $format: "JSON",
@@ -90,7 +90,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       let filter = "Picture/PictureUrl1 ne null"
       if (keyword) {
-        filter += ` and contains(Name,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
+        filter += ` and contains(ScenicSpotName,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
       }
       ApiService.get("/Tourism/ScenicSpot", county, {
         $format: "JSON",
@@ -110,9 +110,29 @@ const actions = {
 
 const mutations = {
   setActivityList(state, data) {
-    state.activityList = data
+    state.activityList = data.map((item) => {
+      item.name = item.ActivityName
+
+      return item
+    })
   },
   setSearchList(state, data) {
+    switch (state.search.type) {
+      case "ScenicSpot":
+        data = data.map((item) => {
+          item.name = item.ScenicSpotName
+
+          return item
+        })
+        break
+      case "Activity":
+        data = data.map((item) => {
+          item.name = item.ActivityName
+
+          return item
+        })
+        break
+    }
     state.searchList = data
   },
   setSearchParams(state, { event, value }) {

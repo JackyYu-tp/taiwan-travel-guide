@@ -2,7 +2,7 @@
 .large-card
   .img(:style="`background-image: url(${item.Picture.PictureUrl1})`")
   .content-wrapper
-    .name {{ item.Name }}
+    .name {{ item.name }}
     .description {{ item.Description }}
     .locate
       Icon.icon(name="locate")
