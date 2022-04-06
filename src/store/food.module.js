@@ -15,7 +15,6 @@ const actions = {
         $filter: "Picture/PictureUrl1 ne null and Address ne null"
       })
         .then(({ data }) => {
-          console.log(data)
           context.commit("setRestaurantList", data)
           resolve()
         })

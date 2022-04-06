@@ -1,17 +1,28 @@
 <template lang="pug">
 .search-container
+  SubForm(
+    :type="search.type",
+    :county="search.county",
+    :keyword="search.keyword",
+    :typeList="typeList",
+    @type="handleInput",
+    @county="handleInput",
+    @keyword="handleInput",
+    @search="handleSearch"
+  )
   component.activity-list(:is="nowCom", :title="title", :list="searchList")
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex"
+import { mapActions, mapState, mapMutations } from "vuex"
 import SmallCardList from "@/components/SmallCardList.vue"
 import LargeCardList from "@/components/LargeCardList.vue"
 export default {
   name: "Search",
   components: {
     SmallCardList,
-    LargeCardList
+    LargeCardList,
+    SubForm: () => import("@/components/SubForm")
   },
   data() {
     return {}
@@ -49,7 +60,14 @@ export default {
   },
   mounted() {},
   methods: {
-    ...mapActions("food", ["getRestaurantList"])
+    ...mapActions("food", ["getRestaurantList"]),
+    ...mapMutations("activity", ["setSearchParams"]),
+    handleInput({ event, value }) {
+      this.setSearchParams({ event, value })
+    },
+    handleSearch() {
+      this.$emit("search")
+    }
   }
 }
 </script>

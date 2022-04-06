@@ -7,7 +7,8 @@
     :typeList="typeList",
     @type="handleInput",
     @county="handleInput",
-    @keyword="handleInput"
+    @keyword="handleInput",
+    @search="handleSearch"
   )
   PopularCity(@search="handlePopularCitySearch")
   LargeCardList.activity-list(title="熱門活動", :list="activityList")

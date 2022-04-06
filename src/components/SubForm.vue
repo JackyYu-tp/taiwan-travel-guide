@@ -33,7 +33,7 @@
             :id="item.value"
           ) {{ item.name }}
       .search
-        Icon(name="search")
+        Icon(name="search", @click="handleSearch")
 </template>
 
 <script>
@@ -61,6 +61,9 @@ export default {
   methods: {
     handleEmit(event, value) {
       this.$emit(event, { event, value })
+    },
+    handleSearch() {
+      this.$emit("search")
     }
   }
 }
@@ -90,6 +93,7 @@ export default {
           background-color: $primary
           border-radius: 6px
           box-shadow: 0px 4px 3px rgba(13, 11, 12, 0.2)
+          cursor: pointer
 +rwdMin(1280px)
   .form
     display: none

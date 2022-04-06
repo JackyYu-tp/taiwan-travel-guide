@@ -9,9 +9,9 @@
       @type="handleInput",
       @county="handleInput",
       @keyword="handleInput",
-      @search="handelSearch"
+      @search="handleSearch"
     )
-  router-view(@search="handelSearch")
+  router-view(@search="handleSearch")
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
     handleInput({ event, value }) {
       this.setSearchParams({ event, value })
     },
-    handelSearch() {
+    handleSearch() {
       if (this.$router.name !== "ActivitySearch") {
         this.$router
           .push({
