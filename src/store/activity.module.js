@@ -6,7 +6,12 @@ const state = {
     { name: "活動", value: "Activity" }
   ],
   activityList: [],
-  searchList: []
+  searchList: [],
+  search: {
+    type: "ScenicSpot",
+    county: "",
+    keyword: ""
+  }
 }
 
 const getters = {}
@@ -109,6 +114,9 @@ const mutations = {
   },
   setSearchList(state, data) {
     state.searchList = data
+  },
+  setSearchParams(state, { event, value }) {
+    state.search[event] = value
   }
 }
 

@@ -17,36 +17,27 @@ export default {
     return {}
   },
   computed: {
-    ...mapState("activity", ["searchList", "typeList"]),
+    ...mapState("activity", ["searchList", "typeList", "search"]),
     ...mapState(["cityList"]),
     title() {
       let keyword = ""
-      if (this.keyword) {
-        keyword = `含有關鍵字『 ${this.keyword} 』的`
+      if (this.search.keyword) {
+        keyword = `含有關鍵字『 ${this.search.keyword} 』的`
       }
       let countyName = "不分縣市"
-      if (this.county) {
+      if (this.search.county) {
         countyName = `${
-          this.cityList.find((item) => item.value === this.county)?.name
+          this.cityList.find((item) => item.value === this.search.county)?.name
         }`
       }
 
       let typeName = this.typeList.find(
-        (item) => item.value === this.type
+        (item) => item.value === this.search.type
       )?.name
       return keyword + countyName + typeName
     },
-    type() {
-      return this.$route.query.type
-    },
-    county() {
-      return this.$route.query.county
-    },
-    keyword() {
-      return this.$route.query.keyword
-    },
     nowCom() {
-      switch (this.type) {
+      switch (this.search.type) {
         case "ScenicSpot":
           return "SmallCardList"
         case "Activity":
@@ -56,54 +47,9 @@ export default {
       }
     }
   },
-  mounted() {
-    this.handelSearch()
-  },
-  updated() {
-    this.handelSearch()
-  },
+  mounted() {},
   methods: {
-    ...mapActions("activity", [
-      "getActivityList",
-      "getActivityListByCounty",
-      "getScenicSpotList",
-      "getScenicSpotListByCounty"
-    ]),
-    ...mapActions("food", ["getRestaurantList"]),
-    handelSearch() {
-      switch (this.type) {
-        case "ScenicSpot":
-          if (this.county) {
-            this.getScenicSpotListByCounty({
-              county: this.county,
-              keyword: this.keyword,
-              search: true
-            })
-          } else {
-            this.getScenicSpotList({
-              keyword: this.keyword,
-              search: true
-            })
-          }
-          break
-        case "Activity":
-          if (this.county) {
-            this.getActivityListByCounty({
-              county: this.county,
-              keyword: this.keyword,
-              search: true
-            })
-          } else {
-            this.getActivityList({
-              keyword: this.keyword,
-              search: true
-            })
-          }
-          break
-        default:
-          break
-      }
-    }
+    ...mapActions("food", ["getRestaurantList"])
   }
 }
 </script>

@@ -1,21 +1,21 @@
 <template lang="pug">
 .hot-container
   SubForm(
-    :type="type",
-    :county="county",
-    :keyword="keyword",
+    :type="search.type",
+    :county="search.county",
+    :keyword="search.keyword",
     :typeList="typeList",
     @type="handleInput",
     @county="handleInput",
     @keyword="handleInput"
   )
-  PopularCity(@search="handleSearch")
+  PopularCity(@search="handlePopularCitySearch")
   LargeCardList.activity-list(title="熱門活動", :list="activityList")
   SmallCardList.activity-list(title="熱門餐飲", :list="restaurantList")
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex"
+import { mapActions, mapMutations, mapState } from "vuex"
 import PopularCity from "@/components/PopularCity.vue"
 import LargeCardList from "@/components/LargeCardList.vue"
 import SmallCardList from "@/components/SmallCardList.vue"
@@ -28,14 +28,10 @@ export default {
     SmallCardList
   },
   data() {
-    return {
-      type: "ScenicSpot",
-      county: "",
-      keyword: ""
-    }
+    return {}
   },
   computed: {
-    ...mapState("activity", ["activityList", "typeList"]),
+    ...mapState("activity", ["activityList", "typeList", "search"]),
     ...mapState("food", ["restaurantList"])
   },
   mounted() {
@@ -45,22 +41,16 @@ export default {
   methods: {
     ...mapActions("activity", ["getActivityList"]),
     ...mapActions("food", ["getRestaurantList"]),
+    ...mapMutations("activity", ["setSearchParams"]),
     handleInput({ event, value }) {
-      this[event] = value
+      this.setSearchParams({ event, value })
     },
-    handleSearch(name) {
-      this.$router
-        .push({
-          name: "ActivitySearch",
-          query: {
-            type: this.type,
-            county: name,
-            keyword: this.keyword
-          }
-        })
-        .catch((error) => {
-          error
-        })
+    handlePopularCitySearch(name) {
+      this.handleInput({ event: "county", value: name })
+      this.handleSearch()
+    },
+    handleSearch() {
+      this.$emit("search")
     }
   }
 }

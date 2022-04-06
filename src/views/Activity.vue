@@ -2,20 +2,20 @@
 .container
   Header
     Form(
-      :type="type",
-      :county="county",
-      :keyword="keyword",
+      :type="search.type",
+      :county="search.county",
+      :keyword="search.keyword",
       :typeList="typeList",
       @type="handleInput",
       @county="handleInput",
       @keyword="handleInput",
       @search="handelSearch"
     )
-  router-view
+  router-view(@search="handelSearch")
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapActions, mapMutations, mapState } from "vuex"
 import Header from "@/components/Header"
 import Form from "@/components/Form"
 import Icon from "@/components/Icon"
@@ -29,32 +29,64 @@ export default {
     Icon
   },
   data() {
-    return {
-      type: "ScenicSpot",
-      county: "",
-      keyword: ""
-    }
+    return {}
   },
   computed: {
-    ...mapState("activity", ["typeList"])
+    ...mapState("activity", ["typeList", "search"])
   },
   methods: {
+    ...mapActions("activity", [
+      "getActivityList",
+      "getActivityListByCounty",
+      "getScenicSpotList",
+      "getScenicSpotListByCounty"
+    ]),
+    ...mapMutations("activity", ["setSearchParams"]),
     handleInput({ event, value }) {
-      this[event] = value
+      this.setSearchParams({ event, value })
     },
     handelSearch() {
-      this.$router
-        .push({
-          name: "ActivitySearch",
-          query: {
-            type: this.type,
-            county: this.county,
-            keyword: this.keyword
+      if (this.$router.name !== "ActivitySearch") {
+        this.$router
+          .push({
+            name: "ActivitySearch"
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      switch (this.search.type) {
+        case "ScenicSpot":
+          if (this.search.county) {
+            this.getScenicSpotListByCounty({
+              county: this.search.county,
+              keyword: this.search.keyword,
+              search: true
+            })
+          } else {
+            this.getScenicSpotList({
+              keyword: this.search.keyword,
+              search: true
+            })
           }
-        })
-        .catch((error) => {
-          error
-        })
+          break
+        case "Activity":
+          if (this.search.county) {
+            this.getActivityListByCounty({
+              county: this.search.county,
+              keyword: this.search.keyword,
+              search: true
+            })
+          } else {
+            this.getActivityList({
+              keyword: this.search.keyword,
+              search: true
+            })
+          }
+          break
+        default:
+          break
+      }
     }
   }
 }
