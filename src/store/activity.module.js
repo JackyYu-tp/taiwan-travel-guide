@@ -112,7 +112,7 @@ const mutations = {
   setActivityList(state, data) {
     state.activityList = data.map((item) => {
       item.name = item.ActivityName
-
+      item.id = item.ActivityID
       return item
     })
   },
@@ -121,14 +121,14 @@ const mutations = {
       case "ScenicSpot":
         data = data.map((item) => {
           item.name = item.ScenicSpotName
-
+          item.id = item.ScenicSpotID
           return item
         })
         break
       case "Activity":
         data = data.map((item) => {
           item.name = item.ActivityName
-
+          item.id = item.ActivityID
           return item
         })
         break

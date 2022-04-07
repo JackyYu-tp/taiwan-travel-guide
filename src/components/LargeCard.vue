@@ -1,6 +1,7 @@
 <template lang="pug">
 .large-card
-  .img(:style="`background-image: url(${item.Picture.PictureUrl1})`")
+  .img
+    img(v-lazy="item.Picture.PictureUrl1")
   .content-wrapper
     .name {{ item.name }}
     .description {{ item.Description }}
@@ -45,8 +46,9 @@ export default {
     flex-shrink: 0
     width: 92px
     height: 100%
-    background-size: cover
-    background-position: center
+    img
+      height: 100%
+      width: 100%
   .content-wrapper
     flex-grow: 1
     flex-shrink: 1

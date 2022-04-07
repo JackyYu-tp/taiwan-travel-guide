@@ -30,7 +30,7 @@ const mutations = {
   setRestaurantList(state, data) {
     data = data.map((item) => {
       item.name = item.RestaurantName
-
+      item.id = item.RestaurantID
       return item
     })
     state.restaurantList = data

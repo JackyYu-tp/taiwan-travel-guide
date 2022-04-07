@@ -4,7 +4,7 @@
     Icon.icon(name="recTag")
     .title {{ title }}
   .item-wrapper
-    SmallCard.item(v-for="item in list", :item="item", :id="item.id")
+    SmallCard.item(v-for="item in list", :item="item", :key="item.id")
 </template>
 
 <script>

@@ -1,6 +1,7 @@
 <template lang="pug">
 .small-card
-  .img(:style="`background-image: url(${item.Picture.PictureUrl1})`")
+  .img
+    img(v-lazy="item.Picture.PictureUrl1")
   .content-wrapper
     .name {{ item.name }}
     .locate
@@ -40,8 +41,9 @@ export default {
   .img
     width: 100%
     height: 96px
-    background-size: cover
-    background-position: center
+    img
+      width: 100%
+      height: 100%
   .content-wrapper
     margin-top: 10px
     display: flex
