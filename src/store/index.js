@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLoading: false,
     cityList: [
       { name: "桃園市", value: "Taoyuan" },
       { name: "金門縣", value: "KinmenCounty" },
@@ -33,7 +34,11 @@ export default new Vuex.Store({
       { name: "臺南市", value: "Tainan" }
     ]
   },
-  mutations: {},
+  mutations: {
+    setLoading(state, status) {
+      state.isLoading = status
+    }
+  },
   actions: {},
   modules: {
     activity,

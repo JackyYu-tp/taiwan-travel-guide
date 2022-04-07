@@ -3,6 +3,29 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  productionSourceMap: false,
+  filenameHashing: true,
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.(js|vue)$/,
+          loader: "eslint-loader",
+          enforce: "pre",
+          include: [path.join(__dirname, "src")],
+          options: {
+            fix: true
+          }
+        }
+      ]
+    },
+    output: {
+      path: path.join(__dirname, "dist"),
+      filename: "js/[name].[hash:8].js",
+      publicPath: "/",
+      chunkFilename: "js/[name].[contenthash:8].js"
+    }
+  },
   chainWebpack: (config) => {
     // 先刪除預設的svg配置
     config.module.rules.delete("svg")

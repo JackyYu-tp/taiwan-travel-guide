@@ -41,11 +41,13 @@ export default {
       "getScenicSpotList",
       "getScenicSpotListByCounty"
     ]),
+    ...mapMutations(["setLoading"]),
     ...mapMutations("activity", ["setSearchParams"]),
     handleInput({ event, value }) {
       this.setSearchParams({ event, value })
     },
     handleSearch() {
+      this.setLoading(true)
       if (this.$route.name !== "ActivitySearch") {
         this.$router
           .push({
@@ -63,11 +65,25 @@ export default {
               keyword: this.search.keyword,
               search: true
             })
+              .then(() => {
+                this.setLoading(false)
+              })
+              .catch((error) => {
+                console.log(error)
+                this.setLoading(false)
+              })
           } else {
             this.getScenicSpotList({
               keyword: this.search.keyword,
               search: true
             })
+              .then(() => {
+                this.setLoading(false)
+              })
+              .catch((error) => {
+                console.log(error)
+                this.setLoading(false)
+              })
           }
           break
         case "Activity":
@@ -77,14 +93,29 @@ export default {
               keyword: this.search.keyword,
               search: true
             })
+              .then(() => {
+                this.setLoading(false)
+              })
+              .catch((error) => {
+                console.log(error)
+                this.setLoading(false)
+              })
           } else {
             this.getActivityList({
               keyword: this.search.keyword,
               search: true
             })
+              .then(() => {
+                this.setLoading(false)
+              })
+              .catch((error) => {
+                console.log(error)
+                this.setLoading(false)
+              })
           }
           break
         default:
+          this.setLoading(false)
           break
       }
     }

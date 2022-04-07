@@ -2,18 +2,24 @@
 .app
   router-view
   Footer
+  Loading(v-if="isLoading")
 </template>
 
 <script>
+import { mapState } from "vuex"
 import Footer from "@/components/Footer"
+import Loading from "@/components/Loading"
 export default {
   components: {
-    Footer
+    Footer,
+    Loading
   },
   data() {
     return {}
   },
-  computed: {}
+  computed: {
+    ...mapState(["isLoading"])
+  }
 }
 </script>
 
