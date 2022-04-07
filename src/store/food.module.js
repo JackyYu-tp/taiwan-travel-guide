@@ -28,6 +28,11 @@ const actions = {
 
 const mutations = {
   setRestaurantList(state, data) {
+    data = data.map((item) => {
+      item.name = item.RestaurantName
+
+      return item
+    })
     state.restaurantList = data
   }
 }

@@ -10,7 +10,13 @@
     @keyword="handleInput",
     @search="handleSearch"
   )
-  component.activity-list(:is="nowCom", :title="title", :list="searchList")
+  component.activity-list(:is="nowCom", :title="title", :list="filteredList")
+  Pagination.pagination(
+    v-if="totalPage > 0",
+    :totalPage="totalPage",
+    :nowPage="page",
+    @setPage="setPage"
+  )
 </template>
 
 <script>
@@ -22,10 +28,14 @@ export default {
   components: {
     SmallCardList,
     LargeCardList,
-    SubForm: () => import("@/components/SubForm")
+    SubForm: () => import("@/components/SubForm"),
+    Pagination: () => import("@/components/Pagination")
   },
   data() {
-    return {}
+    return {
+      page: 1,
+      count: 20
+    }
   },
   computed: {
     ...mapState("activity", ["searchList", "typeList", "search"]),
@@ -47,6 +57,12 @@ export default {
       )?.name
       return keyword + countyName + typeName
     },
+    filteredList() {
+      return this.searchList.slice(
+        (this.page - 1) * this.count,
+        this.page * this.count
+      )
+    },
     nowCom() {
       switch (this.search.type) {
         case "ScenicSpot":
@@ -56,6 +72,13 @@ export default {
         default:
           return "SmallCardList"
       }
+    },
+    totalPage() {
+      let last = 0
+      if (this.searchList % this.count > 0) {
+        last = 1
+      }
+      return Math.floor(this.searchList.length / this.count) + last
     }
   },
   mounted() {},
@@ -67,6 +90,13 @@ export default {
     },
     handleSearch() {
       this.$emit("search")
+    },
+    setPage(page) {
+      this.page = page
+      window.scrollTo({
+        behavior: "smooth",
+        top: 0
+      })
     }
   }
 }
@@ -80,6 +110,8 @@ export default {
   max-width: 1280px
   .activity-list
     margin-top: 40px
+  .pagination
+    margin-top: 50px
 +rwdMin(768px)
   .search-container
     padding: 41px 65px 55px

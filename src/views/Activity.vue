@@ -46,7 +46,7 @@ export default {
       this.setSearchParams({ event, value })
     },
     handleSearch() {
-      if (this.$router.name !== "ActivitySearch") {
+      if (this.$route.name !== "ActivitySearch") {
         this.$router
           .push({
             name: "ActivitySearch"
