@@ -3,6 +3,7 @@
   router-view
   Footer
   Loading(v-if="isLoading")
+  Modal(v-if="isShowModal")
 </template>
 
 <script>
@@ -12,13 +13,14 @@ import Loading from "@/components/Loading"
 export default {
   components: {
     Footer,
-    Loading
+    Loading,
+    Modal: () => import("@/components/Modal")
   },
   data() {
     return {}
   },
   computed: {
-    ...mapState(["isLoading"])
+    ...mapState(["isLoading", "isShowModal"])
   }
 }
 </script>

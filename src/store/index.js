@@ -9,6 +9,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLoading: false,
+    isShowModal: false,
+    nowModalComponent: "CardDetail",
+    nowModalData: {},
     cityList: [
       { name: "桃園市", value: "Taoyuan" },
       { name: "金門縣", value: "KinmenCounty" },
@@ -37,6 +40,11 @@ export default new Vuex.Store({
   mutations: {
     setLoading(state, status) {
       state.isLoading = status
+    },
+    setModalStatus(state, { status, name, data }) {
+      state.isShowModal = status
+      state.nowModalComponent = name
+      state.nowModalData = data
     }
   },
   actions: {},

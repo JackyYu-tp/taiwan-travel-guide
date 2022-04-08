@@ -1,5 +1,5 @@
 <template lang="pug">
-.small-card
+.small-card(@click="handleModalStatus(true)")
   .img
     img(v-lazy="item.Picture.PictureUrl1")
   .content-wrapper
@@ -14,10 +14,15 @@
 <script>
 import Icon from "@/components/Icon"
 import "@/assets/svg/locate.svg"
+import Modal from "@/components/Modal"
+import CardDetail from "@/components/CardDetail"
+import { mapMutations } from "vuex"
 export default {
   name: "SmallCard",
   components: {
-    Icon
+    Icon,
+    Modal,
+    CardDetail
   },
   props: {
     item: Object
@@ -26,7 +31,12 @@ export default {
     return {}
   },
   computed: {},
-  methods: {}
+  methods: {
+    ...mapMutations(["setModalStatus"]),
+    handleModalStatus(status) {
+      this.setModalStatus({ status, name: "CardDetail", data: this.item })
+    }
+  }
 }
 </script>
 
@@ -35,6 +45,7 @@ export default {
 .small-card
   padding: 12px
   background-color: $white
+  cursor: pointer
   display: flex
   flex-direction: column
   position: relative

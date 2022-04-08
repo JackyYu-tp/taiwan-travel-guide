@@ -113,6 +113,21 @@ const mutations = {
     state.activityList = data.map((item) => {
       item.name = item.ActivityName
       item.id = item.ActivityID
+      let time = ""
+      if (item.StartTime) {
+        let startTime = new Date(item.StartTime)
+        time += `${startTime.getFullYear()}-${String(
+          startTime.getMonth() + 1
+        ).padStart(2, "0")}-${String(startTime.getDate()).padStart(2, "0")}`
+      }
+      if (item.EndTime) {
+        let endTime = new Date(item.EndTime)
+        time += ` ~ ${endTime.getFullYear()}-${String(
+          endTime.getMonth() + 1
+        ).padStart(2, "0")}-${String(endTime.getDate()).padStart(2, "0")}`
+      }
+      item.Time = time
+
       return item
     })
   },
@@ -129,6 +144,20 @@ const mutations = {
         data = data.map((item) => {
           item.name = item.ActivityName
           item.id = item.ActivityID
+          let time = ""
+          if (item.StartTime) {
+            let startTime = new Date(item.StartTime)
+            time += `${startTime.getFullYear()}-${String(
+              startTime.getMonth() + 1
+            ).padStart(2, "0")}-${String(startTime.getDate()).padStart(2, "0")}`
+          }
+          if (item.EndTime) {
+            let endTime = new Date(item.EndTime)
+            time += ` ~ ${endTime.getFullYear()}-${String(
+              endTime.getMonth() + 1
+            ).padStart(2, "0")}-${String(endTime.getDate()).padStart(2, "0")}`
+          }
+          item.Time = time
           return item
         })
         break
