@@ -11,7 +11,7 @@
       @keyword="handleInput",
       @search="handleSearch"
     )
-  router-view(@search="handleSearch")
+  router-view(ref="com", @search="handleSearch")
 </template>
 
 <script>
@@ -66,6 +66,7 @@ export default {
               search: true
             })
               .then(() => {
+                this.$refs.com.handleSetSearchInfo("SmallCardList")
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -78,6 +79,7 @@ export default {
               search: true
             })
               .then(() => {
+                this.$refs.com.handleSetSearchInfo("SmallCardList")
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -94,6 +96,7 @@ export default {
               search: true
             })
               .then(() => {
+                this.$refs.com.handleSetSearchInfo("LargeCardList")
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -106,6 +109,7 @@ export default {
               search: true
             })
               .then(() => {
+                this.$refs.com.handleSetSearchInfo("LargeCardList")
                 this.setLoading(false)
               })
               .catch((error) => {

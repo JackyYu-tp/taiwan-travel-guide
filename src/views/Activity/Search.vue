@@ -10,7 +10,11 @@
     @keyword="handleInput",
     @search="handleSearch"
   )
-  component.activity-list(:is="nowCom", :title="title", :list="filteredList")
+  component.activity-list(
+    :is="nowComponent",
+    :title="nowTitle",
+    :list="filteredList"
+  )
   Pagination.pagination(
     v-if="totalPage > 0",
     :totalPage="totalPage",
@@ -34,44 +38,19 @@ export default {
   data() {
     return {
       page: 1,
-      count: 20
+      count: 20,
+      nowComponent: "SmallCardList",
+      nowTitle: ""
     }
   },
   computed: {
     ...mapState("activity", ["searchList", "typeList", "search"]),
     ...mapState(["cityList"]),
-    title() {
-      let keyword = ""
-      if (this.search.keyword) {
-        keyword = `含有關鍵字『 ${this.search.keyword} 』的`
-      }
-      let countyName = "不分縣市"
-      if (this.search.county) {
-        countyName = `${
-          this.cityList.find((item) => item.value === this.search.county)?.name
-        }`
-      }
-
-      let typeName = this.typeList.find(
-        (item) => item.value === this.search.type
-      )?.name
-      return keyword + countyName + typeName
-    },
     filteredList() {
       return this.searchList.slice(
         (this.page - 1) * this.count,
         this.page * this.count
       )
-    },
-    nowCom() {
-      switch (this.search.type) {
-        case "ScenicSpot":
-          return "SmallCardList"
-        case "Activity":
-          return "LargeCardList"
-        default:
-          return "SmallCardList"
-      }
     },
     totalPage() {
       let last = 0
@@ -97,6 +76,30 @@ export default {
         behavior: "smooth",
         top: 0
       })
+    },
+    handleSetSearchInfo(type) {
+      this.setNowListComponentType(type)
+      this.setTitle()
+    },
+    setNowListComponentType(type) {
+      this.nowComponent = type
+    },
+    setTitle() {
+      let keyword = ""
+      if (this.search.keyword) {
+        keyword = `含有關鍵字『 ${this.search.keyword} 』的`
+      }
+      let countyName = "不分縣市"
+      if (this.search.county) {
+        countyName = `${
+          this.cityList.find((item) => item.value === this.search.county)?.name
+        }`
+      }
+
+      let typeName = this.typeList.find(
+        (item) => item.value === this.search.type
+      )?.name
+      this.nowTitle = keyword + countyName + typeName
     }
   }
 }

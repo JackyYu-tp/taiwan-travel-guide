@@ -41,5 +41,5 @@ export default {
 
 <style lang="sass" scoped>
 @import "@/assets/sass/index.sass"
-+form
++form("../assets/img/food.jpg")
 </style>

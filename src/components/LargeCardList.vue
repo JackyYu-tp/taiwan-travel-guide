@@ -1,6 +1,6 @@
 <template lang="pug">
 .list-wrapper
-  .title-wrapper
+  .title-wrapper(v-show="title")
     Icon.icon(name="triTag")
     .title {{ title }}
   .item-wrapper
