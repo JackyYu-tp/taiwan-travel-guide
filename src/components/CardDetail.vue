@@ -163,7 +163,7 @@ export default {
   .card-content
     margin-bottom: 14px
     max-height: 105px
-    overflow-y: scroll
+    overflow-y: auto
     font-size: 14px
     font-weight: 400
     line-height: 21px
@@ -182,4 +182,35 @@ export default {
       height: 19px
       flex-shrink: 0
       color: $primary
++rwdMin(768px)
+  .card-detail
+    padding: 32px
+    max-width: 676px
+    .close-btn
+      width: 45px
+      height: 45px
+      top: -65px
+    .card-title
+      margin-bottom: 22px
+    .img-wrapper
+      margin-bottom: 22px
+      height: 400px
+    .switch-btn-wrapper
+      margin-bottom: 22px
+    .card-content
+      margin-bottom: 22px
+    .card-info
+      display: flex
+      flex-wrap: wrap
+      li
+        flex: 0 0 50%
+        &:not(:first-child)
+          margin-top: 0
+        &:not(:nth-child(1)):not(:nth-child(2))
+          margin-top: 25px
++rwdMin(1280px)
+  .card-detail
+    .close-btn
+      right: -57px
+      top: 0
 </style>
