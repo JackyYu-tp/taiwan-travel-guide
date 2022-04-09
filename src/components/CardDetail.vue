@@ -60,6 +60,13 @@ export default {
           { key: "Address", icon: "locate" }
         ]
       }
+      if (this.item.RestaurantID) {
+        return [
+          { key: "OpenTime", icon: "clock" },
+          { key: "Phone", icon: "phone" },
+          { key: "Address", icon: "locate" }
+        ]
+      }
       return []
     },
     pictureList() {
