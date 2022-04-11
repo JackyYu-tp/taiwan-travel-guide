@@ -52,7 +52,7 @@ export default {
     flex-grow: 0
     flex-shrink: 0
     width: 92px
-    height: 100%
+    height: 96px
     img
       height: 100%
       width: 100%
@@ -97,6 +97,7 @@ export default {
   +rwdMin(1280px)
     .img
       width: 187px
+      height: 100%
     .content-wrapper
       .name
         font-size: 1rem
