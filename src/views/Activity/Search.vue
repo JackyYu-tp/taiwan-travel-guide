@@ -18,7 +18,7 @@
   )
   NoDataList(v-if="isShowNoData && !isLoading && filteredList.length === 0")
   Pagination.pagination(
-    v-if="totalPage > 0",
+    v-if="!isLoading && totalPage > 0",
     :totalPage="totalPage",
     :nowPage="page",
     @setPage="setPage"
