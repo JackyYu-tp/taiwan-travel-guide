@@ -11,10 +11,12 @@
     @search="handleSearch"
   )
   component.activity-list(
+    v-if="!isLoading && filteredList.length > 0",
     :is="nowComponent",
     :title="nowTitle",
     :list="filteredList"
   )
+  NoDataList(v-if="isShowNoData && !isLoading && filteredList.length === 0")
   Pagination.pagination(
     v-if="totalPage > 0",
     :totalPage="totalPage",
@@ -25,27 +27,27 @@
 
 <script>
 import { mapState, mapMutations } from "vuex"
-import SmallCardList from "@/components/SmallCardList.vue"
-import LargeCardList from "@/components/LargeCardList.vue"
 export default {
   name: "FoodSearch",
   components: {
-    SmallCardList,
-    LargeCardList,
+    SmallCardList: () => import("@/components/SmallCardList"),
+    LargeCardList: () => import("@/components/LargeCardList"),
     SubForm: () => import("@/components/SubForm"),
-    Pagination: () => import("@/components/Pagination")
+    Pagination: () => import("@/components/Pagination"),
+    NoDataList: () => import("@/components/NoDataList")
   },
   data() {
     return {
       page: 1,
       count: 20,
       nowComponent: "SmallCardList",
-      nowTitle: ""
+      nowTitle: "",
+      isShowNoData: false
     }
   },
   computed: {
     ...mapState("food", ["searchList", "typeList", "search"]),
-    ...mapState(["cityList"]),
+    ...mapState(["cityList", "isLoading"]),
     filteredList() {
       return this.searchList.slice(
         (this.page - 1) * this.count,
@@ -79,6 +81,7 @@ export default {
     handleSetSearchInfo(type) {
       this.setNowListComponentType(type)
       this.setTitle()
+      this.isShowNoData = true
     },
     setNowListComponentType(type) {
       this.nowComponent = type
