@@ -67,6 +67,12 @@ export default {
           { key: "Address", icon: "locate" }
         ]
       }
+      if (this.item.HotelID) {
+        return [
+          { key: "Phone", icon: "phone" },
+          { key: "Address", icon: "locate" }
+        ]
+      }
       return []
     },
     pictureList() {

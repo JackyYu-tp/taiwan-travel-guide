@@ -18,12 +18,12 @@
           to="/food/popular",
           :class="{ active: page === 'FoodIndex' }"
         ) 美食住宿
-      .nav-item
-        Icon.icon(name="transportTag")
-        router-link.transport(
-          to="/transport",
-          :class="{ active: page === 'Transport' }"
-        ) 景點交通
+      //- .nav-item
+      //-   Icon.icon(name="transportTag")
+      //-   router-link.transport(
+      //-     to="/transport",
+      //-     :class="{ active: page === 'Transport' }"
+      //-   ) 景點交通
   slot
   .shadow.left
   .shadow.right
