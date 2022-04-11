@@ -10,19 +10,19 @@
         Icon.icon(name="viewTag")
         router-link.activity(
           to="/activity/popular",
-          :class="{ active: page === 'ActivityIndex' }"
+          :class="{ active: navModel === 0 }"
         ) 景點活動
       .nav-item
         Icon.icon(name="foodTag")
         router-link.food(
           to="/food/popular",
-          :class="{ active: page === 'FoodIndex' }"
+          :class="{ active: navModel === 1 }"
         ) 美食住宿
       //- .nav-item
       //-   Icon.icon(name="transportTag")
       //-   router-link.transport(
       //-     to="/transport",
-      //-     :class="{ active: page === 'Transport' }"
+      //-     :class="{ active: navModel === 2 }"
       //-   ) 景點交通
   slot
   .shadow.left
@@ -46,6 +46,9 @@ export default {
   computed: {
     page() {
       return this.$route.name
+    },
+    navModel() {
+      return this.$route.meta.navModel
     }
   }
 }
