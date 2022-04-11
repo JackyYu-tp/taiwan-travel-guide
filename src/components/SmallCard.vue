@@ -3,7 +3,7 @@
   .img
     img(v-lazy="item.Picture.PictureUrl1")
   .content-wrapper
-    .name {{ item.name }}
+    h3.name {{ item.name }}
     .locate
       Icon.icon(name="locate")
       .locate-name {{ item.Address || item.City }}

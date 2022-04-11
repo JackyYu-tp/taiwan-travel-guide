@@ -1,6 +1,7 @@
 <template lang="pug">
-.form
+section.form
   .form-wrapper
+    h2 Welcome To Taiwan
     Icon.slogan(name="slogan")
     .input-bar
       .input

@@ -2,7 +2,7 @@
 .city-wrapper
   .title-wrapper
     Icon.icon(name="triTag")
-    .title 熱門城市
+    h2.title 熱門城市
   .item-wrapper
     .item(v-for="item in cityList", @click="handleSearch(item.value)")
       img.img(:src="getImage(item.photo)")

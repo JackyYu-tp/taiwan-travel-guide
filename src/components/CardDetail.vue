@@ -2,7 +2,7 @@
 section.card-detail
   .close-btn(@click="handleModalStatus")
     Icon.icon(name="cross")
-  h3.card-title {{ item.name }}
+  h2.card-title {{ item.name }}
   .img-wrapper
     img(v-lazy="pictureList[pictureIndex]")
   .switch-btn-wrapper(v-if="pictureList.length > 1")
@@ -14,7 +14,7 @@ section.card-detail
       :class="{ disabled: pictureIndex === pictureList.length - 1 }",
       @click="setPictureIndex(pictureIndex + 1)"
     )
-  p.card-content {{ item.Description }}
+  p.card-content(v-if="item.Description") {{ item.Description }}
   ul.card-info
     li(v-if="item[info.key]", v-for="info in infoList", :key="info.key")
       Icon.icon(:name="info.icon")
@@ -169,7 +169,7 @@ export default {
         background-color: $white
   .card-content
     margin-bottom: 14px
-    max-height: 105px
+    max-height: 125px
     overflow-y: auto
     font-size: 14px
     font-weight: 400
@@ -182,7 +182,7 @@ export default {
       display: flex
       align-items: center
       &:not(:first-child)
-        margin-top: 20px
+        margin-top: 12px
     .icon
       margin-right: 12px
       width: 19px
@@ -214,7 +214,7 @@ export default {
         &:not(:first-child)
           margin-top: 0
         &:not(:nth-child(1)):not(:nth-child(2))
-          margin-top: 25px
+          margin-top: 20px
 +rwdMin(1280px)
   .card-detail
     .close-btn

@@ -1,8 +1,8 @@
 <template lang="pug">
-.list-wrapper
+section.list-wrapper
   .title-wrapper(v-show="title")
     Icon.icon(name="recTag")
-    .title {{ title }}
+    h2.title {{ title }}
   .item-wrapper
     SmallCard.item(v-for="item in list", :item="item", :key="item.id")
 </template>

@@ -2,8 +2,10 @@
 .nav
   .header-wrapper
     .logo
+      h1 台灣旅遊導覽
       icon(name="logo")
-    .nav-wrapper
+    nav.nav-wrapper
+      h2 台灣旅遊導覽列
       .nav-item
         Icon.icon(name="viewTag")
         router-link.activity(
@@ -53,6 +55,14 @@ export default {
   position: relative
   background-color: $white
   .header-wrapper
+    position: relative
+    h1
+      position: absolute
+      top: 0
+      left: 0
+      width: 1px
+      height: 1px
+      overflow: hidden
     .logo
       margin: 0 auto
       width: 90px
@@ -67,6 +77,14 @@ export default {
       align-items: center
       font-size: 14px
       line-height: 21px
+      position: relative
+      h2
+        position: absolute
+        top: 0
+        left: 0
+        width: 1px
+        height: 1px
+        overflow: hidden
       .nav-item
         .icon
           display: none

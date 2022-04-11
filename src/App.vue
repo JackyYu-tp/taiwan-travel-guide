@@ -1,7 +1,7 @@
 <template lang="pug">
 .app
   router-view
-  Footer
+  Footer.footer
   Loading(v-if="isLoading")
   Modal(v-if="isShowModal")
 </template>
@@ -31,6 +31,10 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: space-between
 </style>
 
 <style lang="sass" scoped></style>
