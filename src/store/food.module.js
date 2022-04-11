@@ -95,6 +95,26 @@ const actions = {
           reject()
         })
     })
+  },
+  getHotelListByCounty(context, { county, keyword }) {
+    return new Promise((resolve, reject) => {
+      let filter = "Picture/PictureUrl1 ne null"
+      if (keyword) {
+        filter += ` and contains(HotelName,'${keyword}') or contains(Address,'${keyword}') or contains(Description,'${keyword}')`
+      }
+      ApiService.get("/Tourism/Hotel", county, {
+        $format: "JSON",
+        $filter: filter
+      })
+        .then(({ data }) => {
+          context.commit("setSearchList", data)
+          resolve()
+        })
+        .catch((response) => {
+          console.log(response)
+          reject()
+        })
+    })
   }
 }
 
@@ -129,8 +149,8 @@ const mutations = {
         break
       case "Hotel":
         data = data.map((item) => {
-          // item.name = item.ActivityName
-          // item.id = item.ActivityID
+          item.name = item.HotelName
+          item.id = item.HotelID
           // let time = ""
           // if (item.StartTime) {
           //   let startTime = new Date(item.StartTime)

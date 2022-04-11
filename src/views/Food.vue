@@ -35,7 +35,12 @@ export default {
     ...mapState("food", ["typeList", "search"])
   },
   methods: {
-    ...mapActions("food", ["getRestaurantList", "getRestaurantListByCounty"]),
+    ...mapActions("food", [
+      "getRestaurantList",
+      "getRestaurantListByCounty",
+      "getHotelList",
+      "getHotelListByCounty"
+    ]),
     ...mapMutations(["setLoading"]),
     ...mapMutations("food", ["setSearchParams"]),
     handleInput({ event, value }) {
@@ -62,6 +67,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -75,6 +81,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -85,13 +92,14 @@ export default {
           break
         case "Hotel":
           if (this.search.county) {
-            this.getActivityListByCounty({
+            this.getHotelListByCounty({
               county: this.search.county,
               keyword: this.search.keyword,
               search: true
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -99,12 +107,13 @@ export default {
                 this.setLoading(false)
               })
           } else {
-            this.getActivityList({
+            this.getHotelList({
               keyword: this.search.keyword,
               search: true
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {

@@ -30,12 +30,12 @@ const routes = [
         path: "popular",
         name: "FoodIndex",
         component: () => import("@/views/Food/Index.vue")
+      },
+      {
+        path: "search",
+        name: "FoodSearch",
+        component: () => import("@/views/Food/Search.vue")
       }
-      // {
-      //   path: "search",
-      //   name: "FoodSearch",
-      //   component: () => import("@/views/Activity/Search.vue")
-      // }
     ]
   },
   {

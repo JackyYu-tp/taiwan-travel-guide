@@ -28,7 +28,7 @@ import { mapState, mapMutations } from "vuex"
 import SmallCardList from "@/components/SmallCardList.vue"
 import LargeCardList from "@/components/LargeCardList.vue"
 export default {
-  name: "Search",
+  name: "FoodSearch",
   components: {
     SmallCardList,
     LargeCardList,
@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapState("activity", ["searchList", "typeList", "search"]),
+    ...mapState("food", ["searchList", "typeList", "search"]),
     ...mapState(["cityList"]),
     filteredList() {
       return this.searchList.slice(
@@ -62,7 +62,7 @@ export default {
   },
   mounted() {},
   methods: {
-    ...mapMutations("activity", ["setSearchParams"]),
+    ...mapMutations("food", ["setSearchParams"]),
     handleInput({ event, value }) {
       this.setSearchParams({ event, value })
     },

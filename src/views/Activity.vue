@@ -67,6 +67,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -80,6 +81,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("SmallCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -97,6 +99,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("LargeCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
@@ -110,6 +113,7 @@ export default {
             })
               .then(() => {
                 this.$refs.com.handleSetSearchInfo("LargeCardList")
+                this.$refs.com.setPage(1)
                 this.setLoading(false)
               })
               .catch((error) => {
