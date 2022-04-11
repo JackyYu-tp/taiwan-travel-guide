@@ -24,7 +24,19 @@ const routes = [
   {
     path: "/food",
     name: "Food",
-    component: () => import("@/views/Food.vue")
+    component: () => import("@/views/Food.vue"),
+    children: [
+      {
+        path: "popular",
+        name: "FoodIndex",
+        component: () => import("@/views/Food/Index.vue")
+      }
+      // {
+      //   path: "search",
+      //   name: "FoodSearch",
+      //   component: () => import("@/views/Activity/Search.vue")
+      // }
+    ]
   },
   {
     path: "/transport",

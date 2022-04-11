@@ -14,7 +14,10 @@
         ) 景點活動
       .nav-item
         Icon.icon(name="foodTag")
-        router-link.food(to="/food", :class="{ active: page === 'Food' }") 美食住宿
+        router-link.food(
+          to="/food/popular",
+          :class="{ active: page === 'FoodIndex' }"
+        ) 美食住宿
       .nav-item
         Icon.icon(name="transportTag")
         router-link.transport(
